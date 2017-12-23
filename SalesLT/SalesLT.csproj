@@ -190,6 +190,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Customer.cs" />
+    <Compile Include="Repositories\CustomerMapping.cs" />
     <Compile Include="Repositories\SalesContext.cs" />
     <Compile Include="Repositories\SalesRepository.cs" />
     <Compile Include="Services\SalesService.cs" />
