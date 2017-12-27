@@ -21,5 +21,17 @@ namespace SalesLT.Controllers
         {
             return View(_service.GetCustomers());
         }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        //public ActionResult Create()
+        //{
+
+        //}
     }
 }
