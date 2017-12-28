@@ -33,18 +33,18 @@ namespace SalesLT.Controllers
         public ActionResult Create(Customer customer)
         {
             _service.CreateCustomer(customer);
-            return Index();
+            return View("Index");
         }
 
         // this should not have and int? it should be int. it should be callled GetCustomerById not Edut
         [HttpGet]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
             return View(_service.GetOneCustomer(id));
         }
 
         // this should be  PUT and have a Customer as a parameter
-        [HttpPost]
+        [HttpPut]
         public ActionResult UpdateCustomer(Customer customer)
         {
             _service.UpdateCustomer(customer);

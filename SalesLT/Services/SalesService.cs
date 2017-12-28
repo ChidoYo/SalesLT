@@ -29,7 +29,7 @@ namespace SalesLT.Services
         // this should return the updated Customer and accept a Customer as a parameter
         public void UpdateCustomer(Customer customer)
         {
-            _repo.UpdateCustomer(customer);
+            //_repo.UpdateCustomer(customer);
         }
 
         public void CreateCustomer(Customer customer)
