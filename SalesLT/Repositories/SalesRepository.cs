@@ -31,12 +31,15 @@ namespace SalesLT.Repositories
         public void UpdateCustomer(Customer updatedCustomer)
         {
             // 1. get the right customer from the DB
+            var customer = _sales.Customers.Find(id);
             // 2. update the fields on the db customer with the passed in customer
+            customer.FirstName = updatedCustomer.FirstName;
 
             // 3. dave the changes
             _sales.SaveChanges();
 
             // 4. return the updated customer
+            return customer;
         }
 
         public void AddCustomer(Customer customer)
