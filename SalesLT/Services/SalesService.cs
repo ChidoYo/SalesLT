@@ -26,6 +26,7 @@ namespace SalesLT.Services
             return customer;
         }
 
+        // this should return the updated Customer and accept a Customer as a parameter
         public void EditCustomer()
         {
             _repo.EditCustomer();
