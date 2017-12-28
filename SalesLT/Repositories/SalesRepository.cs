@@ -16,7 +16,7 @@ namespace SalesLT.Repositories
 
         public List<Customer> GetCustomers() // this is returning a 'List' of customers
         {
-            var customerList = _sales.Customers.OrderBy(c => c.Id).Take(10).ToList();
+            var customerList = _sales.Customers.OrderBy(c => c.Id).ToList();
             return customerList;
         }
 
@@ -27,8 +27,9 @@ namespace SalesLT.Repositories
             return customer;
         }
 
-        public void EditCustomer()
+        public void UpdateCustomer(Customer customer)
         {
+            //var customer = _context.Customers.Find()
             _sales.SaveChanges();
         }
 

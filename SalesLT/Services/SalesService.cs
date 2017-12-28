@@ -26,9 +26,9 @@ namespace SalesLT.Services
             return customer;
         }
 
-        public void EditCustomer()
+        public void UpdateCustomer(Customer customer)
         {
-            _repo.EditCustomer();
+            _repo.UpdateCustomer(customer);
         }
 
         public void CreateCustomer(Customer customer)

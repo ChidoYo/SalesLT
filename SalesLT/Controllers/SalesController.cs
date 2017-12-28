@@ -42,10 +42,10 @@ namespace SalesLT.Controllers
             return View(_service.GetOneCustomer(id));
         }
 
-        [HttpPost]
-        public ActionResult Save()
+        [HttpPut]
+        public ActionResult Update(Customer customer)
         {
-            _service.EditCustomer();
+            _service.UpdateCustomer(customer);
             return Index();
         }
     }
