@@ -20,6 +20,7 @@ namespace SalesLT.Services
             return customerList;
         }
 
+        // typically this method would be just GetCustomer or GetCustomerById
         public Customer GetOneCustomer(int id)
         {
             var customer = _repo.GetOneCustomer(id);
