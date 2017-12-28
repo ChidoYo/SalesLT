@@ -36,14 +36,14 @@ namespace SalesLT.Controllers
             return Index();
         }
 
-        // this should not have and int? it should be int. it should be callled GetCustomerById not Edut
+        // this should not have and int? it should be int. it should be callled GetCustomerById not Edit
         [HttpGet]
         public ActionResult Edit(int? id)
         {
             return View(_service.GetOneCustomer(id));
         }
 
-        // this should be  PUT and have a Customer as a parameter
+        // this should be PUT and have a Customer as a parameter
         [HttpPost]
         public ActionResult UpdateCustomer(Customer customer)
         {
