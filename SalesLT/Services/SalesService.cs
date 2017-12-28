@@ -20,6 +20,7 @@ namespace SalesLT.Services
             return customerList;
         }
 
+        // typically this method would be just GetCustomer or GetCustomerById
         public Customer GetOneCustomer(int id)
         {
             var customer = _repo.GetOneCustomer(id);
@@ -27,9 +28,10 @@ namespace SalesLT.Services
         }
 
         // this should return the updated Customer and accept a Customer as a parameter
-        public void UpdateCustomer(Customer customer)
+        public UpdateCustomer(Customer customer)
         {
-            //_repo.UpdateCustomer(customer);
+            _repo.UpdateCustomer(customer);
+            return customer;
         }
 
         public void CreateCustomer(Customer customer)

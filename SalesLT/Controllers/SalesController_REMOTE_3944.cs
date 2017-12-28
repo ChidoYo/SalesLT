@@ -38,7 +38,7 @@ namespace SalesLT.Controllers
 
         // this should not have and int? it should be int. it should be callled GetCustomerById not Edit
         [HttpGet]
-        public ActionResult GetCustomerById(int id)
+        public ActionResult Edit(int? id)
         {
             return View(_service.GetOneCustomer(id));
         }
