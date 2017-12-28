@@ -20,7 +20,16 @@ namespace SalesLT.Services
             return customerList;
         }
 
-        
+        public Customer GetOneCustomer(int? id)
+        {
+            var customer = _repo.GetOneCustomer(id);
+            return customer;
+        }
+
+        public void EditCustomer()
+        {
+            _repo.EditCustomer();
+        }
 
         public void CreateCustomer(Customer customer)
         {

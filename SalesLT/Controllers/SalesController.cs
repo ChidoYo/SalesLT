@@ -36,11 +36,17 @@ namespace SalesLT.Controllers
             return Index();
         }
 
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
-            //
+            return View(_service.GetOneCustomer(id));
+        }
 
-            return View();
+        [HttpPost]
+        public ActionResult Save()
+        {
+            _service.EditCustomer();
+            return Index();
         }
     }
 }
