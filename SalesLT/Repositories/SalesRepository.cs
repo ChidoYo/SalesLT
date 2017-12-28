@@ -28,7 +28,7 @@ namespace SalesLT.Repositories
         }
 
         // this method needs to have a Customer as a parameter
-        public void UpdateCustomer(Customer customer)
+        public void UpdateCustomer(Customer updatedCustomer)
         {
             // 1. get the right customer from the DB
             // 2. update the fields on the db customer with the passed in customer
