@@ -3,6 +3,7 @@ using SalesLT.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -28,10 +29,18 @@ namespace SalesLT.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Create()
-        //{
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            _service.CreateCustomer(customer);
+            return Index();
+        }
 
-        //}
+        public ActionResult Edit(int? id)
+        {
+            //
+
+            return View();
+        }
     }
 }

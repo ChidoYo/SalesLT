@@ -6,10 +6,13 @@
         <h2>Customer</h2>
 
         <ul class="list-group">
-            @foreach (var customer in Model)
-            {
-                <li class="list-group-item">@customer.FirstName @customer.LastName</li>
-            }
+        @foreach (var customer in Model)
+         {
+            <li class="list-group-item">
+                @customer.FirstName @customer.MiddleName @customer.LastName
+                @Html.ActionLink("Edit", "Edit", "Sales", new { id = @customer.Id }, new { @class = "badge badge-secondary"})
+            </li>
+         }
         </ul>
     </div>
 </div>

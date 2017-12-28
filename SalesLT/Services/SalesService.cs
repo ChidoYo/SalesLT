@@ -19,5 +19,12 @@ namespace SalesLT.Services
             var customerList = _repo.GetCustomers();
             return customerList;
         }
+
+        
+
+        public void CreateCustomer(Customer customer)
+        {
+            _repo.AddCustomer(customer);
+        }
     }
 }
