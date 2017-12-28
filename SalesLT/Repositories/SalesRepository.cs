@@ -20,6 +20,7 @@ namespace SalesLT.Repositories
             return customerList;
         }
 
+        // this shouldn't be an int? it should be and int
         public Customer GetOneCustomer(int? id) // this is returning s 'single customer'. Hence: public Customer...
         {
             var customer = _sales.Customers.Find(id);
@@ -27,6 +28,7 @@ namespace SalesLT.Repositories
             return customer;
         }
 
+        // this method needs to have a Customer as a parameter
         public void EditCustomer()
         {
             _sales.SaveChanges();
