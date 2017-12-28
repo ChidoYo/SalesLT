@@ -16,20 +16,20 @@ namespace SalesLT.Repositories
 
         public List<Customer> GetCustomers() // this is returning a 'List' of customers
         {
-            var customerList = _sales.Customers.OrderBy(c => c.Id).ToList();
+            var customerList = _sales.Customers.OrderBy(c => c.Id).Take(10).ToList();
             return customerList;
         }
 
-        public Customer GetOneCustomer(int? id) // this is returning s 'single customer'. Hence: public Customer...
+        public Customer GetOneCustomer(int id) // this is returning s 'single customer'. Hence: public Customer...
         {
             var customer = _sales.Customers.Find(id);
-            //var customer = _sales.Customers.FirstOrDefault(c => c.Id == id);
             return customer;
         }
 
+        // this method needs to have a Customer as a parameter
         public void UpdateCustomer(Customer customer)
         {
-            //var customer = _context.Customers.Find()
+            
             _sales.SaveChanges();
         }
 
