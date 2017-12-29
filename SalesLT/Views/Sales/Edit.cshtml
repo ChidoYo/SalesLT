@@ -15,7 +15,6 @@
     <div class="col-lg-4">
         @using (Html.BeginForm("UpdateCustomer", "Sales"))
         {
-            @Html.HiddenFor(Model => Model.Id)
             <div class="form-group">
                 @Html.LabelFor(Model => Model.FirstName, "First Name", new { })
                 @Html.EditorFor(Model => Model.FirstName, new { htmlAttributes = new { @class = "form-control" } })

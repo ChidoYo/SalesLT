@@ -42,11 +42,11 @@ namespace SalesLT.Controllers
             return View("Edit", _service.GetOneCustomer(id));
         }
 
-        [HttpPut]
+        [HttpPost]
         public ActionResult UpdateCustomer(Customer customer)
         {
             _service.UpdateCustomer(customer);
-            return Index();
+            return RedirectToAction("Index");
         }
     }
 }
