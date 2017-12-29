@@ -20,29 +20,29 @@ namespace SalesLT.Repositories
             return customerList;
         }
 
-        // typically this method would be just GetCustomer or GetCustomerById
         public Customer GetCustomerById(int id) // this is returning s 'single customer'. Hence: public Customer...
         {
             var customer = _sales.Customers.Find(id);
             return customer;
         }
 
-        // this method needs to have a Customer as a parameter
         public Customer UpdateCustomer(Customer updatedCustomer)
         {
-            // 1. get the right customer from the DB
             var customer = _sales.Customers.Find(updatedCustomer.Id);
 
-            // 2. update the fields on the db customer with the passed in customer
             customer.FirstName = updatedCustomer.FirstName;
             customer.MiddleName = updatedCustomer.MiddleName;
             customer.LastName = updatedCustomer.LastName;
 
-            // 3. dave the changes
             _sales.SaveChanges();
-
-            // 4. return the updated customer
             return customer;
+        }
+
+        public void DeleteCustomer(int id)
+        {
+            var customer = _sales.Customers.Find(id);
+            _sales.Customers.Remove(customer);
+            _sales.SaveChanges();
         }
 
         public void AddCustomer(Customer customer)

@@ -39,7 +39,14 @@ namespace SalesLT.Controllers
         [HttpGet]
         public ActionResult GetCustomerById(int id)
         {
-            return View("Edit", _service.GetOneCustomer(id));
+            return View("Edit", _service.GetCustomerById(id));
+        }
+
+        //[HttpPost, ActionName("DeleteCustomer")]
+        public ActionResult DeleteCustomer(int id)
+        {
+            _service.DeleteCustomer(id);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

@@ -20,8 +20,7 @@ namespace SalesLT.Services
             return customerList;
         }
 
-        // typically this method would be just GetCustomer or GetCustomerById
-        public Customer GetOneCustomer(int id)
+        public Customer GetCustomerById(int id)
         {
             var customer = _repo.GetCustomerById(id);
             return customer;
@@ -32,6 +31,11 @@ namespace SalesLT.Services
         {
             var customer = _repo.UpdateCustomer(updatedCustomer);
             return customer;
+        }
+
+        public void DeleteCustomer(int id)
+        {
+            _repo.DeleteCustomer(id);
         }
 
         public void CreateCustomer(Customer customer)

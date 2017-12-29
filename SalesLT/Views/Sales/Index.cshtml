@@ -10,6 +10,9 @@
          {
             <li class="list-group-item">
                 @customer.FirstName @customer.MiddleName @customer.LastName
+
+                @Html.ActionLink("Delete", "DeleteCustomer", "Sales", new { id = customer.Id }, new { @class = "badge badge-secondary" })
+
                 @Html.ActionLink("Edit", "GetCustomerById", "Sales", new { id = @customer.Id }, new { @class = "badge badge-secondary"})
             </li>
          }
