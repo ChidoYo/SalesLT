@@ -42,5 +42,12 @@ namespace SalesLT.Services
         {
             _repo.AddCustomer(customer);
         }
+
+        // ProductModels
+        public List<ProductModel> GetProductModels()
+        {
+            var productList = _repo.GetProductModels();
+            return productList;
+        }
     }
 }

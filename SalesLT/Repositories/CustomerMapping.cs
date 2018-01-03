@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 
 namespace SalesLT.Repositories
 {
@@ -18,6 +18,8 @@ namespace SalesLT.Repositories
             Property(c => c.FirstName).HasColumnName("FirstName");
             Property(c => c.MiddleName).HasColumnName("MiddleName");
             Property(c => c.LastName).HasColumnName("LastName");
+            Property(c => c.EmailAddress).HasColumnName("EmailAddress");
+            Property(c => c.Phone).HasColumnName("Phone");
         }
     }
 }

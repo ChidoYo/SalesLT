@@ -1,0 +1,31 @@
+﻿@using SalesLT.Repositories;
+@model List<ProductModel>
+
+@{
+    ViewBag.Title = "Product Models";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Product Models</h2>
+
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.CatalogDescription</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

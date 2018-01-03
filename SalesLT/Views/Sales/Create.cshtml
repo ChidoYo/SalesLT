@@ -11,7 +11,8 @@
 
 <div class="row">
     <div class="col-lg-4">
-        <form method="post">
+        @using (Html.BeginForm())
+        {
             <div class="form-group">
                 <label for="firstName">First Name</label>
                 <input name="FirstName" type="text" id="firstName" class="form-control" />
@@ -24,7 +25,15 @@
                 <label for="lastName">Last Name</label>
                 <input name="LastName" type="text" id="lastName" class="form-control" />
             </div>
+            <div class="form-group">
+                <label for="EmailAddress">Email Address</label>
+                <input name="EmailAddress" id="EmailAddress" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="Phone">Phone</label>
+                <input name="Phone" id="Phone" class="form-control" />
+            </div>
             <input type="submit" value="Add Customer" class="btn btn-primary" />
-        </form>
+        }
     </div>
 </div>

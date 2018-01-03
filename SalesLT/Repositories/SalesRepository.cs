@@ -16,7 +16,8 @@ namespace SalesLT.Repositories
 
         public List<Customer> GetCustomers() // this is returning a 'List' of customers
         {
-            var customerList = _sales.Customers.OrderBy(c => c.Id).Take(10).ToList();
+            //var customerList = _sales.Customers.OrderBy(c => c.Id).Take(10).ToList();
+            var customerList = _sales.Customers.OrderBy(c => c.Id).ToList();
             return customerList;
         }
 
@@ -33,6 +34,8 @@ namespace SalesLT.Repositories
             customer.FirstName = updatedCustomer.FirstName;
             customer.MiddleName = updatedCustomer.MiddleName;
             customer.LastName = updatedCustomer.LastName;
+            customer.EmailAddress = updatedCustomer.EmailAddress;
+            customer.Phone = updatedCustomer.Phone;
 
             _sales.SaveChanges();
             return customer;
@@ -49,6 +52,13 @@ namespace SalesLT.Repositories
         {
             _sales.Customers.Add(customer);
             _sales.SaveChanges();
+        }
+
+        // ProductModels
+        public List<ProductModel> GetProductModels()
+        {
+            var productList = _sales.ProductModels.OrderBy(c => c.Id).ToList();
+            return productList;
         }
     }
 }
