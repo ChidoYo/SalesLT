@@ -13,9 +13,9 @@ namespace SalesLT.Repositories
         public CustomerAddressMapping()
         {
             ToTable("CustomerAddress", "SalesLT");
-            HasKey(c => c.Id);
+            HasKey(c => new { c.CustomerId, c.AddressId });
 
-            Property(c => c.Id).HasColumnName("CustomerID").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            Property(c => c.CustomerId).HasColumnName("CustomerID");
             Property(c => c.AddressId).HasColumnName("AddressID");
         }
     }

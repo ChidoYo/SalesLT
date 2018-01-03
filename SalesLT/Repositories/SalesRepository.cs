@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace SalesLT.Repositories
 {
@@ -23,7 +24,7 @@ namespace SalesLT.Repositories
 
         public Customer GetCustomerById(int id) // this is returning s 'single customer'. Hence: public Customer...
         {
-            var customer = _sales.Customers.Find(id);
+            var customer = _sales.Customers.Include(c => c.CustomerAddresses.Select(ca => ca.Address)).Single(c => c.Id == id);
             return customer;
         }
 

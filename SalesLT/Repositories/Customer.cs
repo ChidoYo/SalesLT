@@ -13,5 +13,6 @@ namespace SalesLT.Repositories
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public string Phone { get; set; }
+        public virtual List<CustomerAddress> CustomerAddresses { get; set; }
     }
 }
