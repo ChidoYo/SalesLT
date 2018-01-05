@@ -7,13 +7,13 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h2>Edit Customer</h2>
+        <h2>@ViewBag.Title</h2>
     </div>
 </div>
 
-<div class="row">
-    @using (Html.BeginForm("UpdateCustomer", "Sales"))
-    {
+@using (Html.BeginForm("UpdateCustomer", "Sales"))
+{
+    <div class="row">
         @Html.HiddenFor(Model => Model.Id)
         <div class="col-lg-4">
             <div class="form-group">
@@ -36,13 +36,41 @@
                 @Html.LabelFor(Model => Model.Phone, "Phone", new { })
                 @Html.EditorFor(Model => Model.Phone, new { htmlAttributes = new { @class = "form-control" } })
             </div>
+        </div>
+        <div class="col-lg-4">
+            @foreach (var customerAddress in Model.CustomerAddresses)
+            {
+                <div class="form-group">
+                    <label for="AddressLine1">Address Line 1</label>
+                    @Html.EditorFor(Model => customerAddress.Address.AddressLine1, new { htmlAttributes = new { @class = "form-control", @id = "AddressLine1" } })
+                </div>
+                <div class="form-group">
+                    <label for="AddressLine2">Address Line 2</label>
+                    @Html.EditorFor(Model => customerAddress.Address.AddressLine2, new { htmlAttributes = new { @class = "form-control", @id = "AddressLine2" } })
+                </div>
+                <div class="form-group">
+                    <label for="City">City</label>
+                    @Html.EditorFor(Model => customerAddress.Address.City, new { htmlAttributes = new { @class = "form-control", @id = "City" } })
+                </div>
+                <div class="form-group">
+                    <label for="State">State</label>
+                    @Html.EditorFor(Model => customerAddress.Address.StateProvince, new { htmlAttributes = new { @class = "form-control", @id = "State" } })
+                </div>
+                <div class="form-group">
+                    <label for="Country">Country</label>
+                    @Html.EditorFor(Model => customerAddress.Address.CountryRegion, new { htmlAttributes = new { @class = "form-control", @id = "Country" } })
+                </div>
+                <div class="form-group">
+                    <label for="Zip">Zip</label>
+                    @Html.EditorFor(Model => customerAddress.Address.PostalCode, new { htmlAttributes = new { @class = "form-control", @id = "Zip" } })
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 text-right">
             <input type="submit" value="Update Customer" class="btn btn-primary" />
             @Html.ActionLink("Back", "Index", "Sales", new object { }, new { @class = "btn btn-link" })
         </div>
-        <div class="col-lg-4">
-            <div class="form-group">
-                @Html.LabelFor(Model => Model.AddressLine1, "Address", new { })
-            </div>
-        </div>
-    }
-</div>
+    </div>
+}

@@ -30,13 +30,26 @@ namespace SalesLT.Repositories
 
         public Customer UpdateCustomer(Customer updatedCustomer)
         {
-            var customer = _sales.Customers.Find(updatedCustomer.Id);
+            // var customer = _sales.Customers.Find(updatedCustomer.Id);
+            var customer = _sales.Customers.Include(c => c.CustomerAddresses.Select(ca => ca.Address)).Single(c => c.Id == updatedCustomer.Id);
 
             customer.FirstName = updatedCustomer.FirstName;
             customer.MiddleName = updatedCustomer.MiddleName;
             customer.LastName = updatedCustomer.LastName;
             customer.EmailAddress = updatedCustomer.EmailAddress;
             customer.Phone = updatedCustomer.Phone;
+
+            foreach (var item in updatedCustomer.CustomerAddresses)
+            {
+                var customerAddress = customer.CustomerAddresses.FirstOrDefault(x => x.AddressId == item.AddressId).Address;
+
+                customerAddress.AddressLine1 = item.Address.AddressLine1;
+                customerAddress.AddressLine2 = item.Address.AddressLine2;
+                customerAddress.City = item.Address.City;
+                customerAddress.StateProvince = item.Address.StateProvince;
+                customerAddress.CountryRegion = item.Address.CountryRegion;
+                customerAddress.PostalCode = item.Address.PostalCode;
+            }
 
             _sales.SaveChanges();
             return customer;
