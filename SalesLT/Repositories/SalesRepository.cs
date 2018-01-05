@@ -39,16 +39,29 @@ namespace SalesLT.Repositories
             customer.EmailAddress = updatedCustomer.EmailAddress;
             customer.Phone = updatedCustomer.Phone;
 
-            foreach (var item in updatedCustomer.CustomerAddresses)
-            {
-                var customerAddress = customer.CustomerAddresses.FirstOrDefault(x => x.AddressId == item.AddressId).Address;
+            //foreach (var item in updatedCustomer.CustomerAddresses)
+            //{
+            //    var customerAddress = customer.CustomerAddresses.FirstOrDefault(x => x.AddressId == item.AddressId).Address;
 
-                customerAddress.AddressLine1 = item.Address.AddressLine1;
-                customerAddress.AddressLine2 = item.Address.AddressLine2;
-                customerAddress.City = item.Address.City;
-                customerAddress.StateProvince = item.Address.StateProvince;
-                customerAddress.CountryRegion = item.Address.CountryRegion;
-                customerAddress.PostalCode = item.Address.PostalCode;
+            //    customerAddress.AddressLine1 = item.Address.AddressLine1;
+            //    customerAddress.AddressLine2 = item.Address.AddressLine2;
+            //    customerAddress.City = item.Address.City;
+            //    customerAddress.StateProvince = item.Address.StateProvince;
+            //    customerAddress.CountryRegion = item.Address.CountryRegion;
+            //    customerAddress.PostalCode = item.Address.PostalCode;
+            //}
+
+            for (int i = 0; i < customer.CustomerAddresses.Count; i++)
+            {
+                var item = customer.CustomerAddresses;
+                var customerAddress = customer.CustomerAddresses.FirstOrDefault(x => x.AddressId == item[i].AddressId).Address;
+
+                customerAddress.AddressLine1 = item[i].Address.AddressLine1;
+                customerAddress.AddressLine2 = item[i].Address.AddressLine2;
+                customerAddress.City = item[i].Address.City;
+                customerAddress.StateProvince = item[i].Address.StateProvince;
+                customerAddress.CountryRegion = item[i].Address.CountryRegion;
+                customerAddress.PostalCode = item[i].Address.PostalCode;
             }
 
             _sales.SaveChanges();
