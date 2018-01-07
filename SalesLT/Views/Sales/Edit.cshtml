@@ -38,6 +38,10 @@
             </div>
         </div>
         <div class="col-lg-4">
+            <!--
+                the logic on line 45 breaks the binding. You need explicitly loop over Model.CustomerAddresses
+                creating a new variable from Model.CustomerAddresses breaks the binding
+            --> 
             @{ 
                 var customerAddress = Model.CustomerAddresses;
                 int i;
