@@ -1,39 +1,72 @@
-﻿
+﻿@using SalesLT.Repositories
+
+@model Customer
+
 @{
     ViewBag.Title = "Create";
 }
 
 <div class="row">
     <div class="col-lg-12">
-        <h2>Create</h2>
+        <h2>@ViewBag.Title</h2>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-4">
-        @using (Html.BeginForm())
-        {
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-lg-4">
             <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input name="FirstName" type="text" id="firstName" class="form-control" />
+                @Html.LabelFor(Model => Model.FirstName, "First Name", new { })
+                @Html.EditorFor(Model => Model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
             </div>
             <div class="form-group">
-                <label for="middle">Middle Name</label>
-                <input name="MiddleName" type="text" id="middle" class="form-control" />
+                @Html.LabelFor(Model => Model.MiddleName, "Middle Name", new { })
+                @Html.EditorFor(Model => Model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
             </div>
             <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input name="LastName" type="text" id="lastName" class="form-control" />
+                @Html.LabelFor(Model => Model.LastName, "Last Name", new { })
+                @Html.EditorFor(Model => Model.LastName, new { htmlAttributes = new { @class = "form-control" } })
             </div>
             <div class="form-group">
-                <label for="EmailAddress">Email Address</label>
-                <input name="EmailAddress" id="EmailAddress" class="form-control" />
+                @Html.LabelFor(Model => Model.EmailAddress, "Email Address", new { })
+                @Html.EditorFor(Model => Model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
             </div>
             <div class="form-group">
-                <label for="Phone">Phone</label>
-                <input name="Phone" id="Phone" class="form-control" />
+                @Html.LabelFor(Model => Model.Phone, "Phone", new { })
+                @Html.EditorFor(Model => Model.Phone, new { htmlAttributes = new { @class = "form-control" } })
             </div>
-            <input type="submit" value="Add Customer" class="btn btn-primary" />
-        }
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.CustomerAddresses[0].Address.AddressLine1, "Address", new { })
+                @Html.EditorFor(Model => Model.CustomerAddresses[0].Address.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.CustomerAddresses[0].Address.AddressLine2, "Apt/Suite", new { })
+                @Html.EditorFor(Model => Model.CustomerAddresses[0].Address.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.CustomerAddresses[0].Address.City, "City", new { })
+                @Html.EditorFor(Model => Model.CustomerAddresses[0].Address.City, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.CustomerAddresses[0].Address.StateProvince, "State", new { })
+                @Html.EditorFor(Model => Model.CustomerAddresses[0].Address.StateProvince, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.CustomerAddresses[0].Address.CountryRegion, "Country", new { })
+                @Html.EditorFor(Model => Model.CustomerAddresses[0].Address.CountryRegion, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(Model => Model.CustomerAddresses[0].Address.PostalCode, "ZIP", new { })
+                @Html.EditorFor(Model => Model.CustomerAddresses[0].Address.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-lg-8">
+            <input type="submit" value="Add Customer" class="btn btn-primary" />
+        </div>
+    </div>
+}

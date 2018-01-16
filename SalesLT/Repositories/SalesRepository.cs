@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using SalesLT.Factories;
 
 namespace SalesLT.Repositories
 {
     public class SalesRepository
     {
+
+
         private readonly SalesContext _sales;
 
         public SalesRepository(SalesContext sales)
@@ -39,22 +42,10 @@ namespace SalesLT.Repositories
             customer.EmailAddress = updatedCustomer.EmailAddress;
             customer.Phone = updatedCustomer.Phone;
 
-            //foreach (var item in updatedCustomer.CustomerAddresses)
-            //{
-            //    var customerAddress = customer.CustomerAddresses.FirstOrDefault(x => x.AddressId == item.AddressId).Address;
-
-            //    customerAddress.AddressLine1 = item.Address.AddressLine1;
-            //    customerAddress.AddressLine2 = item.Address.AddressLine2;
-            //    customerAddress.City = item.Address.City;
-            //    customerAddress.StateProvince = item.Address.StateProvince;
-            //    customerAddress.CountryRegion = item.Address.CountryRegion;
-            //    customerAddress.PostalCode = item.Address.PostalCode;
-            //}
-
             for (int i = 0; i < customer.CustomerAddresses.Count; i++)
             {
-                var item = customer.CustomerAddresses;
-                var customerAddress = customer.CustomerAddresses.FirstOrDefault(x => x.AddressId == item[i].AddressId).Address;
+                var item = updatedCustomer.CustomerAddresses;
+                var customerAddress = customer.CustomerAddresses.FirstOrDefault(x => x.AddressId == item[i].Address.AddressId).Address;
 
                 customerAddress.AddressLine1 = item[i].Address.AddressLine1;
                 customerAddress.AddressLine2 = item[i].Address.AddressLine2;
@@ -78,6 +69,7 @@ namespace SalesLT.Repositories
         public void AddCustomer(Customer customer)
         {
             _sales.Customers.Add(customer);
+            //_sales.CustomerAddresses.Add(customer.CustomerAddresses);
             _sales.SaveChanges();
         }
 

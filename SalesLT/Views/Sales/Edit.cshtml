@@ -16,6 +16,7 @@
     <div class="row">
         @Html.HiddenFor(Model => Model.Id)
         <div class="col-lg-4">
+            <h3>Customer Information</h3>
             <div class="form-group">
                 @Html.LabelFor(Model => Model.FirstName, "First Name", new { })
                 @Html.EditorFor(Model => Model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
@@ -38,46 +39,43 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <!--
-                the logic on line 45 breaks the binding. You need explicitly loop over Model.CustomerAddresses
-                creating a new variable from Model.CustomerAddresses breaks the binding
-            --> 
-            @{ 
-                var customerAddress = Model.CustomerAddresses;
-                int i;
-            }
-            @for (i = 0; i < customerAddress.Count(); i++)
+            @for (int i = 0; i < Model.CustomerAddresses.Count(); i++)
             {
-                @Html.HiddenFor(Model => customerAddress[i].Address.AddressId)
+                var addressNumber = 1;
+                addressNumber = addressNumber + i;
+                <h3>Address @addressNumber</h3>
+                @Html.HiddenFor(Model => Model.CustomerAddresses[i].Address.AddressId)
                 <div class="form-group">
-                    @Html.LabelFor(Model => customerAddress[i].Address.AddressLine1, "Address 1", new { })
-                    @Html.EditorFor(Model => customerAddress[i].Address.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.LabelFor(Model => Model.CustomerAddresses[i].Address.AddressLine1, "Address", new { })
+                    @Html.EditorFor(Model => Model.CustomerAddresses[i].Address.AddressLine1, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(Model => customerAddress[i].Address.AddressLine2, "Address 2", new { })
-                    @Html.EditorFor(Model => customerAddress[i].Address.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.LabelFor(Model => Model.CustomerAddresses[i].Address.AddressLine2, "Apt/Suite", new { })
+                    @Html.EditorFor(Model => Model.CustomerAddresses[i].Address.AddressLine2, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(Model => customerAddress[i].Address.City, "City", new { })
-                    @Html.EditorFor(Model => customerAddress[i].Address.City, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.LabelFor(Model => Model.CustomerAddresses[i].Address.City, "City", new { })
+                    @Html.EditorFor(Model => Model.CustomerAddresses[i].Address.City, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(Model => customerAddress[i].Address.StateProvince, "State", new { })
-                    @Html.EditorFor(Model => customerAddress[i].Address.StateProvince, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.LabelFor(Model => Model.CustomerAddresses[i].Address.StateProvince, "State", new { })
+                    @Html.EditorFor(Model => Model.CustomerAddresses[i].Address.StateProvince, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(Model => customerAddress[i].Address.CountryRegion, "Country", new { })
-                    @Html.EditorFor(Model => customerAddress[i].Address.CountryRegion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.LabelFor(Model => Model.CustomerAddresses[i].Address.CountryRegion, "Country", new { })
+                    @Html.EditorFor(Model => Model.CustomerAddresses[i].Address.CountryRegion, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(Model => customerAddress[i].Address.PostalCode, "ZIP", new { })
-                    @Html.EditorFor(Model => customerAddress[i].Address.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.LabelFor(Model => Model.CustomerAddresses[i].Address.PostalCode, "ZIP", new { })
+                    @Html.EditorFor(Model => Model.CustomerAddresses[i].Address.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
                 </div>
             }
+
+            <button class="btn btn-success btn-sm">+ Add Address</button>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-8 text-right">
+        <div class="col-lg-8">
             @Html.ActionLink("Back", "Index", "Sales", new object { }, new { @class = "btn btn-link" })
             <input type="submit" value="Update Customer" class="btn btn-primary" />
         </div>
